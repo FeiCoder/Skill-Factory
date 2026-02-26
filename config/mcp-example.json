@@ -1,0 +1,13 @@
+{
+    "mcpServers": {
+        "memory": {
+            "description": "Memory - Knowledge graph memory system (long-term memory based on graph database)",
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-memory"
+            ],
+            "disabled": true
+        }
+    }
+}

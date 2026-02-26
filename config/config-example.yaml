@@ -1,0 +1,44 @@
+# Book2Skills Configuration Example
+
+# 1. LLM Configuration
+# API Key for authentication
+api_key: "YOUR_API_KEY_HERE"
+
+# API Base URL
+# - Domestic: https://api.minimaxi.com
+# - International: https://api.minimax.io
+api_base: "https://api.minimax.io"
+
+# Model name to use
+model: "MiniMax-M2.5"
+
+# Provider type: "anthropic" or "openai"
+provider: "anthropic"
+
+# 2. Agent Configuration
+# Maximum number of steps per task
+max_steps: 100
+
+# Directory for agent workspace
+workspace_dir: "./workspace"
+
+# Path to system prompt file
+system_prompt_path: "skill_factory_prompt.md"
+
+# 3. Retry Configuration
+retry:
+  enabled: true
+  max_retries: 3
+  initial_delay: 1.0
+  max_delay: 60.0
+  exponential_base: 2.0
+
+# 4. Tools Configuration
+tools:
+  enable_file_tools: true
+  enable_bash: true
+  enable_note: true
+  enable_skills: true
+  skills_dir: "./skills"
+  enable_mcp: true
+  mcp_config_path: "mcp.json"
