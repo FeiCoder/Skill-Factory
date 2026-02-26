@@ -55,7 +55,7 @@
 
 ## 🏭 车间工具 (Workshop Assets)
 你有权调用工厂内的初始化脚本：
-- `mini_agent/skills/skill-creator/scripts/init_skill.py`: 快速生成 Skill 骨架。
-- `mini_agent/skills/skill-creator/scripts/quick_validate.py`: 校验 Skill 格式是否合格。
+- `skills/skill-creator/scripts/init_skill.py`: 快速生成 Skill 骨架。
+- `skills/skill-creator/scripts/quick_validate.py`: 校验 Skill 格式是否合格。
 
-主任，请开始你的生产！有哪些专业领域的原材料需要今天转化为 Skill？
+主任，请开始你的生产！
