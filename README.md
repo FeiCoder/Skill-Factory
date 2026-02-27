@@ -20,13 +20,22 @@ Book2Skills 是一个旨在将人类知识转化为 LLM Agent 易理解、可执
 
 ```text
 .
-├── library/             # 原材料：专业书、文档等 (e.g., .txt, .pdf, .md)
+├── book2skills/         # 核心源代码
+│   ├── agent.py         # 主 Agent 循环
+│   ├── cli.py           # 命令行接口
+│   ├── config.py        # 配置加载
+│   ├── llm/             # LLM 客户端
+│   ├── tools/           # 工具实现
+│   ├── utils/           # 辅助工具
+│   ├── config/          # 内置配置模板
+│   └── skills/          # 内置 Skill 库 (git submodule)
+├── library/             # 原材料：存入专业书、文档等 (.txt, .md)
 ├── produced_skill/      # 产品：生成的 Agent Skills 包
-├── skills/              # Skill 规范定义与示例
-├── config/              # 配置文件与 Prompt 模板
-├── llm/                 # LLM 客户端封装
-├── tools/               # Agent 工具箱
-└── cli.py               # 项目入口
+├── tests/               # 测试套件
+├── docs/                # 项目文档
+├── workspace/           # Agent 工作临时文件夹
+├── pyproject.toml       # 项目构建配置
+└── README.md            # 项目自述文件
 ```
 
 ## 🛠 快速开始

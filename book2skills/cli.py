@@ -27,17 +27,17 @@ from prompt_toolkit.history import FileHistory
 from prompt_toolkit.key_binding import KeyBindings
 from prompt_toolkit.styles import Style
 
-from llm.llm_wrapper import LLMClient
-from agent import Agent
-from config import Config
-from llm.base import LLMProvider
-from tools.base import Tool
-from tools.bash_tool import BashKillTool, BashOutputTool, BashTool
-from tools.file_tools import EditTool, ReadTool, WriteTool
-from tools.mcp_loader import cleanup_mcp_connections, load_mcp_tools_async, set_mcp_timeout_config
-from tools.note_tool import SessionNoteTool
-from tools.skill_tool import create_skill_tools
-from utils import calculate_display_width
+from .llm.llm_wrapper import LLMClient
+from .agent import Agent
+from .config import Config
+from .schema import LLMProvider
+from .tools.base import Tool
+from .tools.bash_tool import BashKillTool, BashOutputTool, BashTool
+from .tools.file_tools import EditTool, ReadTool, WriteTool
+from .tools.mcp_loader import cleanup_mcp_connections, load_mcp_tools_async, set_mcp_timeout_config
+from .tools.note_tool import SessionNoteTool
+from .tools.skill_tool import create_skill_tools
+from .utils import calculate_display_width
 
 
 # ANSI color codes
@@ -373,12 +373,11 @@ async def initialize_base_tools(config: Config):
                 skills_dir = str(skills_path)
             else:
                 # Search in priority order:
-                # 1. Current directory (dev mode: ./skills or ./mini_agent/skills)
-                # 2. Package directory (installed: site-packages/mini_agent/skills)
+                # 1. Current directory (dev mode: ./skills or ./skills)
+                # 2. Package directory (installed: site-packages/skills)
                 search_paths = [
-                    skills_path,  # ./skills for backward compatibility
-                    Path("mini_agent") / skills_path,  # ./mini_agent/skills
-                    Config.get_package_dir() / skills_path,  # site-packages/mini_agent/skills
+                    skills_path,  # ./skills
+                    Config.get_package_dir() / skills_path,  # site-packages/skills
                 ]
 
                 # Find first existing path
@@ -535,7 +534,7 @@ async def run_agent(workspace_dir: Path, task: str = None):
         return
 
     # 2. Initialize LLM client
-    from mini_agent.retry import RetryConfig as RetryConfigBase
+    from .retry import RetryConfig as RetryConfigBase
 
     # Convert configuration format
     retry_config = RetryConfigBase(

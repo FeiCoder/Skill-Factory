@@ -26,7 +26,7 @@ dependencies = [
 ]
 
 [project.scripts]
-book2skills = "cli:main"
+book2skills = "book2skills.cli:main"
 
 [project.optional-dependencies]
 dev = [
@@ -42,13 +42,12 @@ build-backend = "setuptools.build_meta"
 include-package-data = true
 
 [tool.setuptools.packages.find]
-include = ["mini_agent*"]
+where = ["."]
+include = ["book2skills*"]
 exclude = ["tests*"]
 
-# Include skills directory (git submodule) as package data
-# After moving submodule to mini_agent/skills
 [tool.setuptools.package-data]
-mini_agent = ["skills/**/*"]
+book2skills = ["**/*.md", "config/*.md", "config/*.yaml", "skills/**/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
