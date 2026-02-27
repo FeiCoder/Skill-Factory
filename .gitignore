@@ -62,3 +62,4 @@ CLAUDE.md
 .claude
 
 .agent_memory.json
+uv.lock
